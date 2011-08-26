@@ -312,6 +312,7 @@ or are using ``ipython -pylab`` which does it automatically.
 **1D plotting**
 
 .. plot::
+   :include-source: 1
 
    >>> x = np.linspace(0, 3, 20)
    >>> y = np.linspace(0, 9, 20)
@@ -322,6 +323,7 @@ or are using ``ipython -pylab`` which does it automatically.
 **2D arrays** (such as images)
 
 .. plot::
+   :include-source: 1
 
    >>> image = np.random.rand(30, 30)
    >>> plt.imshow(image)
@@ -584,6 +586,7 @@ array([[  1900.,  30000.,   4000.,  51300.],
 .. rubric:: Images
 
 .. plot::
+   :include-source: 1
 
    >>> img = plt.imread('../../data/elephant.png')
    >>> img.shape, img.dtype
@@ -1009,6 +1012,7 @@ Same idea in higher dimensions:
   of hares and lynxes (and carrots) in northern Canada during 20 years.
 
   .. plot::
+     :include-source: 1
 
      We can first plot the data:
 
@@ -1048,6 +1052,7 @@ Same idea in higher dimensions:
      :align: center
 
   .. plot::
+     :include-source: 1
 
      >>> n_stories = 1000 # number of walkers
      >>> t_max = 200      # time during which we follow the walker
@@ -1205,6 +1210,7 @@ broadcasting. For instance, if we want to compute the distance from
 the origin of points on a 10x10 grid, we can do:
 
 .. plot::
+   :include-source: 1
 
     >>> x, y = np.arange(5), np.arange(5)
     >>> distance = np.sqrt(x**2 + y[:, np.newaxis]**2)
@@ -1763,6 +1769,7 @@ The data in ``populations.txt`` describes the populations
 of hares and lynxes (and carrots) in northern Canada during 20 years:
 
 .. plot::
+   :include-source: 1
 
    >>> data = np.loadtxt('../../data/populations.txt')
    >>> year, hares, lynxes, carrots = data.T  # trick: columns to variables
@@ -2135,6 +2142,7 @@ additionally specify padding etc.
 .. rubric:: Worked example: Crude periodicity finding
 
 .. plot:: intro/numpy/solutions/4_a_periodicity.py
+   :include-source: 1
 
 .. rubric:: Worked example: Gaussian image blur
 
@@ -2149,6 +2157,7 @@ Convolution:
    \tilde{f}_1(\omega) = \tilde{K}(\omega) \tilde{f}_0(\omega)
 
 .. plot:: intro/numpy/solutions/4_b_image_blur.py
+   :include-source: 1
 
 
 Masked arrays
@@ -2244,6 +2253,7 @@ The masked array package also contains domain-aware functions::
    time, ignoring the invalid numbers.
 
    .. plot::
+     :include-source: 1
 
       >>> data = np.loadtxt('../../data/populations.txt')
       >>> populations = np.ma.masked_array(data[:,1:])
@@ -2284,6 +2294,7 @@ array([-1.        ,  0.33333333])
 2
 
 .. plot::
+   :include-source: 1
 
    >>> x = np.linspace(0, 1, 20)
    >>> y = np.cos(x) + 0.3*np.random.rand(20)
@@ -2315,6 +2326,7 @@ Example using polynomials in Chebyshev basis, for polynomials in
 range ``[-1, 1]``:
 
 .. plot::
+   :include-source: 1
 
    >>> x = np.linspace(-1, 1, 2000)
    >>> y = np.cos(x) + 0.3*np.random.rand(2000)

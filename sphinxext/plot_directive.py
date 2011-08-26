@@ -36,7 +36,7 @@ The ``plot`` directive supports the options
 
     include-source : bool
         Whether to display the source code. Default can be changed in conf.py
-    
+
 and the ``image`` directive options ``alt``, ``height``, ``width``,
 ``scale``, ``align``, ``class``.
 
@@ -94,7 +94,7 @@ def setup(app):
     setup.app = app
     setup.config = app.config
     setup.confdir = app.confdir
-    
+
     app.add_config_value('plot_pre_code', '', True)
     app.add_config_value('plot_include_source', False, True)
     app.add_config_value('plot_formats', ['png', 'hires.png', 'pdf'], True)
@@ -200,6 +200,9 @@ TEMPLATE = """
 
    {% for img in images %}
    .. image:: {{ build_dir }}/{{ img.basename }}.pdf
+      {%- for option in options %}
+      {{ option }}
+      {% endfor %}
    {% endfor %}
 
 """
@@ -354,12 +357,11 @@ def run(arguments, content, options, state_machine, state, lineno):
                 shutil.copyfile(fn, os.path.join(dest_dir,
                                                  os.path.basename(fn)))
 
-    # copy script (if necessary)
-    if source_file_name == rst_file:
-        target_name = os.path.join(dest_dir, output_base + source_ext)
-        f = open(target_name, 'w')
-        f.write(unescape_doctest(code))
-        f.close()
+    # copy script
+    target_name = os.path.join(dest_dir, output_base + source_ext)
+    f = open(target_name, 'w')
+    f.write(unescape_doctest(code))
+    f.close()
 
     return errors
 
@@ -449,7 +451,7 @@ def run_code(code, code_path, ns=None):
     # Reset sys.argv
     old_sys_argv = sys.argv
     sys.argv = [code_path]
-    
+
     try:
         try:
             code = unescape_doctest(code)
